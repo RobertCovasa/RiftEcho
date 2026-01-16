@@ -7,14 +7,14 @@ Rift Echo replaces the default League of Legends announcer with a fully customiz
 
 ## Features
 
-* **Real-Time Event Tracking:** Reacts instantly to kills, deaths, turrets, and objectives.
+* **Real-Time Event Tracking:** Reacts instantly to kills, deaths, turret plates, and objectives.
 * **Smart Logic Engine:**
     * **Kill Streaks:** Tracks *Rampage*, *Godlike*, and *Legendary* streaks for both allies and enemies.
     * **Shutdowns:** Detects when a streak is ended.
-    * **Smart Timers:** Automatically informs you 30 seconds before Baron or Dragon spawns, and when Inhibitors are respawning.
-* **Hextech UI:** A sleek, dark-mode interface inspired by the League client.
-* **Voice Packs:** seamless switching between different announcer packs without restarting.
-* **Background Audio:** Uses `pyglet` for low-latency audio mixing (can play multiple sounds at once).
+    * **Smart Timers:** Automatically warns you 30 seconds before objectives spawn and announces the exact moment they go live.
+* **Hextech UI:** A sleek, dark-mode interface inspired by the League client, built with CustomTkinter.
+* **Voice Packs:** Seamless switching between different announcer packs without restarting.
+* **Reliable Audio:** Uses `pyglet` with a custom queuing system to prevent audio overlaps and ensure every event is heard.
 
 ## Installation
 
@@ -68,10 +68,10 @@ Rift Echo supports unlimited custom voice packs. To create one:
 * `MinionsSpawning.wav`
 * `minions_soon.wav` (Plays at 0:15)
 * `FirstBlood.wav`
-* `ace_enemy.wav` (We aced them)
-* `ace_us.wav` (We got aced)
 * `victory.wav`
 * `defeat.wav`
+* `ace_enemy.wav` (We aced them)
+* `ace_us.wav` (We got aced)
 
 **Player Events (You)**
 * `kill.wav`
@@ -88,25 +88,34 @@ Rift Echo supports unlimited custom voice packs. To create one:
 
 **Team Events (Allies/Enemies)**
 * `ally_slain.wav` / `enemy_slain.wav`
+* `executed_ally.wav` / `executed_enemy.wav`
 * `ally_rampage.wav` / `enemy_rampage.wav`
 * `ally_godlike.wav` / `enemy_godlike.wav`
 * `ally_legendary.wav` / `enemy_legendary.wav`
 * `shutdown_ally.wav` (Ally lost streak)
 * `shutdown_enemy.wav` (We shut down an enemy)
-* `executed_ally.wav` / `executed_enemy.wav`
 
-**Objectives**
-* `turret_destroy.wav` (We broke it) / `turret_lost.wav` (We lost it)
+**Objectives (Taken/Lost)**
+* `turret_destroy.wav` / `turret_lost.wav`
 * `inhib_destroy.wav` / `inhib_lost.wav`
 * `grubs_taken.wav` / `grubs_lost.wav`
 * `herald_taken.wav` / `herald_lost.wav`
 * `dragon_taken.wav` / `dragon_lost.wav`
 * `baron_taken.wav` / `baron_lost.wav`
 
-**Timers**
-* `inhib_respawning.wav` (Plays 4m 45s after inhib death)
-* `baron_spawning.wav` (Plays 30s before spawn)
-* `dragon_spawning.wav` (Plays 30s before spawn)
+**Timers & Spawns**
+* **Warnings (30s before spawn):**
+    * `grubs_spawning.wav`
+    * `herald_spawning.wav`
+    * `dragon_spawning.wav`
+    * `baron_spawning.wav`
+    * `inhib_respawning.wav` (15s before respawn)
+* **Live Events (Exact spawn time):**
+    * `grubs_live.wav`
+    * `herald_live.wav`
+    * `dragon_live.wav`
+    * `baron_live.wav`
+    * `inhib_live.wav`
 
 ## Troubleshooting
 

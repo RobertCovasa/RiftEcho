@@ -28,7 +28,7 @@ LOL_GREEN       = "#0397AB"
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("dark-blue")
 
-class RiftCrierGUI(ctk.CTk):
+class RiftEchoGUI(ctk.CTk):
     def __init__(self):
         super().__init__()
         
@@ -82,7 +82,7 @@ class RiftCrierGUI(ctk.CTk):
         self.header_frame = ctk.CTkFrame(self, fg_color="transparent", height=60)
         self.header_frame.grid(row=0, column=0, sticky="ew", padx=25, pady=(20, 10))
         
-        title_label = ctk.CTkLabel(self.header_frame, text="RIFT CRIER", font=("Times New Roman", 24, "bold"), text_color=LOL_GOLD)
+        title_label = ctk.CTkLabel(self.header_frame, text="RIFT ECHO", font=("Times New Roman", 24, "bold"), text_color=LOL_GOLD)
         title_label.pack(side="left")
         
         self.status_frame = ctk.CTkFrame(self.header_frame, fg_color="transparent", border_width=1, border_color=LOL_GOLD_DIM, corner_radius=6)
@@ -317,6 +317,6 @@ class RiftCrierGUI(ctk.CTk):
         except: pass
 
 if __name__ == "__main__":
-    app = RiftCrierGUI()
+    app = RiftEchoGUI()
     app.protocol("WM_DELETE_WINDOW", app.on_close)
     app.mainloop()
