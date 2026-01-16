@@ -43,6 +43,11 @@ Rift Echo replaces the default League of Legends announcer with a fully customiz
     * **Mute:** Temporarily disables all sounds.
     * **Refresh (⟳):** If you add a new pack folder while running, click this to detect it.
 
+## Known Issues
+
+* **[Announcements overlapping]**: Announcements interrupt eachother, when more than one event happens at the same time or shortly after eachother, where they overlap.
+* **[Wrong announcement]**: In 2 - 3 cases the wrong announcement is being played, when the event happens.
+
 ## Creating Custom Voice Packs
 
 Rift Echo supports unlimited custom voice packs. To create one:
