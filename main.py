@@ -32,13 +32,13 @@ class RiftCrierGUI(ctk.CTk):
     def __init__(self):
         super().__init__()
         
-        # --- AUDIO INIT ---
+        # --- AUDIO INIT (PYGLET) ---
         self.player = pyglet.media.Player()
         self.audio_queue = queue.Queue()
         self.current_pack_path = ""
         self.is_muted = False
         
-        # New: Time-based busy check
+        # Time-based busy check
         self.busy_until = 0.0
         
         # --- GUI SETUP ---
@@ -172,11 +172,10 @@ class RiftCrierGUI(ctk.CTk):
     # --- LOGIC ---
     def audio_worker(self):
         """
-        Background Loop that plays sounds strictly sequentially.
-        Wrapped in try/except to ensure the app NEVER bricks even if audio fails.
+        Background Loop that plays sounds sequentially.
         """
         try:
-            # Keep audio driver alive
+            # Important: Pump pyglet events to keep driver alive
             pyglet.clock.tick()
             
             now = time.time()
@@ -184,43 +183,44 @@ class RiftCrierGUI(ctk.CTk):
             # Only process if we are past the busy time
             if not self.is_muted and now >= self.busy_until:
                 try:
-                    # Try to get sound from queue (non-blocking)
                     category, key = self.audio_queue.get_nowait()
-                    
-                    # Resolve filename
                     filename = self.event_map.get(category, {}).get(key)
+                    
                     if filename:
                         full_path = os.path.join(self.current_pack_path, filename)
                         if os.path.exists(full_path):
                             try:
-                                # Load sound
+                                # FIX: CREATE A FRESH PLAYER FOR EVERY SOUND
+                                # This ensures no "zombie" state from previous plays.
+                                new_player = pyglet.media.Player()
                                 source = pyglet.media.load(full_path, streaming=False)
                                 
-                                # Play sound
-                                self.player.queue(source)
-                                self.player.volume = self.vol_slider.get()
-                                self.player.play()
+                                new_player.queue(source)
+                                new_player.volume = self.vol_slider.get()
+                                new_player.play()
                                 
-                                # Block the worker for the duration
+                                # Update global ref so Mute/Volume controls work on it
+                                self.player = new_player
+                                
+                                # Block queue for duration
                                 duration = source.duration
-                                if duration is None: duration = 1.0 
+                                if duration is None: duration = 1.0
                                 
                                 self.busy_until = now + duration + 0.1
                                 print(f"[Audio] Playing: {key} ({duration:.2f}s)")
                                 
                             except Exception as e:
                                 print(f"[Audio Error] Failed to play {key}: {e}")
-                                self.busy_until = now # Don't get stuck waiting
+                                self.busy_until = now 
                         else:
                             print(f"[Audio Error] File Missing: {filename}")
-                            self.busy_until = now # Don't get stuck waiting
+                            self.busy_until = now
                 except queue.Empty:
                     pass
                     
         except Exception as e:
-            print(f"[Worker Crash Prevented] {e}")
+            print(f"[Worker Error] {e}")
         
-        # ALWAYS restart the worker loop
         self.after(50, self.audio_worker)
 
     def trigger_audio(self, category, key, log_msg=""):
@@ -259,12 +259,17 @@ class RiftCrierGUI(ctk.CTk):
     def update_volume(self, val):
         percent = int(val * 100)
         self.vol_label_var.set(f"MASTER VOLUME: {percent}%")
-        self.player.volume = float(val)
+        # Try to update current player if it exists
+        try:
+            self.player.volume = float(val)
+        except: pass
 
     def toggle_mute(self):
         self.is_muted = (self.mute_var.get() == "on")
         if self.is_muted:
-            self.player.pause()
+            try:
+                self.player.pause()
+            except: pass
             self.audio_queue.queue.clear()
             self.busy_until = 0
             self.mute_btn.configure(text_color=LOL_RED)
@@ -277,16 +282,22 @@ class RiftCrierGUI(ctk.CTk):
             if files:
                 f = random.choice(files)
                 full_path = os.path.join(self.current_pack_path, f)
+                
+                # Create fresh player for test too
+                new_player = pyglet.media.Player()
                 source = pyglet.media.load(full_path, streaming=False)
                 
-                # Interrupt current playback (FIXED METHOD)
-                self.player.next_source() 
+                # Stop old if playing
+                try: self.player.pause() 
+                except: pass
                 
-                self.player.queue(source)
-                self.player.volume = self.vol_slider.get()
-                self.player.play()
+                new_player.queue(source)
+                new_player.volume = self.vol_slider.get()
+                new_player.play()
                 
-                # Set busy timer
+                self.player = new_player
+                
+                # Set busy
                 duration = source.duration
                 if duration is None: duration = 1.0
                 self.busy_until = time.time() + duration + 0.1
