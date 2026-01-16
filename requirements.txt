@@ -1,0 +1,4 @@
+customtkinter
+requests
+urllib3
+pyglet

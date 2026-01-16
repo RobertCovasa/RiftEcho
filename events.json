@@ -1,0 +1,56 @@
+{
+    "global": {
+        "GameStart": "GameStart.wav",
+        "MinionsSpawning": "MinionsSpawning.wav",
+        "minions_soon": "minions_soon.wav",
+        "FirstBlood": "FirstBlood.wav",
+        "ace_us": "ace_us.wav",
+        "ace_enemy": "ace_enemy.wav",
+        "victory": "victory.wav",
+        "defeat": "defeat.wav"
+    },
+    "warnings": {
+        "inhib_respawning": "inhib_respawning.wav",
+        "baron_spawning": "baron_spawning.wav",
+        "dragon_spawning": "dragon_spawning.wav"
+    },
+    "player": {
+        "kill": "kill.wav",
+        "death": "death.wav",
+        "executed": "executed.wav",
+        "multikill_2": "multikill_2.wav",
+        "multikill_3": "multikill_3.wav",
+        "multikill_4": "multikill_4.wav",
+        "multikill_5": "multikill_5.wav",
+        "rampage": "rampage.wav",
+        "godlike": "godlike.wav",
+        "legendary": "legendary.wav",
+        "shutdown": "shutdown.wav"
+    },
+    "team": {
+        "ally_slain": "ally_slain.wav",
+        "enemy_slain": "enemy_slain.wav",
+        "ally_rampage": "ally_rampage.wav",
+        "enemy_rampage": "enemy_rampage.wav",
+        "ally_godlike": "ally_godlike.wav",
+        "enemy_godlike": "enemy_godlike.wav",
+        "ally_legendary": "ally_legendary.wav",
+        "enemy_legendary": "enemy_legendary.wav",
+        "shutdown_ally": "shutdown_ally.wav",
+        "shutdown_enemy": "shutdown_enemy.wav",
+        "executed_ally": "executed_ally.wav",
+        "executed_enemy": "executed_enemy.wav",
+        "turret_destroy": "turret_destroy.wav",
+        "turret_lost": "turret_lost.wav",
+        "inhib_destroy": "inhib_destroy.wav",
+        "inhib_lost": "inhib_lost.wav",
+        "grubs_taken": "grubs_taken.wav",
+        "grubs_lost": "grubs_lost.wav",
+        "herald_taken": "herald_taken.wav",
+        "herald_lost": "herald_lost.wav",
+        "baron_taken": "baron_taken.wav",
+        "baron_lost": "baron_lost.wav",
+        "dragon_taken": "dragon_taken.wav",
+        "dragon_lost": "dragon_lost.wav"
+    }
+}
