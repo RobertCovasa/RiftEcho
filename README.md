@@ -45,8 +45,13 @@ Rift Echo replaces the default League of Legends announcer with a fully customiz
 
 ## Known Issues
 
-* **[Announcements overlapping]**: Announcements interrupt eachother, when more than one event happens at the same time or shortly after eachother, where they overlap.
-* **[Wrong announcement]**: In 2 - 3 cases the wrong announcement is being played, when the event happens.
+* None
+
+## Fixed Issues
+
+* **[x]**: Announcements interrupt eachother, when more than one event happens at the same time or shortly after eachother, where they overlap.
+* **[x]**: In 2 - 3 cases the wrong announcement is being played, when the event happens.
+* **[x]**: Grubs & Herald announcement was played 30s too early.
 
 ## Creating Custom Voice Packs
 

@@ -21,8 +21,8 @@ class GameStateTracker:
             {"time": 300, "category": "warnings", "key": "grubs_live", "announced": False},     
             {"time": 270, "category": "warnings", "key": "dragon_spawning", "announced": False},
             {"time": 300, "category": "warnings", "key": "dragon_live", "announced": False},     
-            {"time": 810, "category": "warnings", "key": "herald_spawning", "announced": False},
-            {"time": 840, "category": "warnings", "key": "herald_live", "announced": False},     
+            {"time": 870, "category": "warnings", "key": "herald_spawning", "announced": False},
+            {"time": 900, "category": "warnings", "key": "herald_live", "announced": False},     
             {"time": 1170, "category": "warnings", "key": "baron_spawning", "announced": False},
             {"time": 1200, "category": "warnings", "key": "baron_live", "announced": False},     
         ]
