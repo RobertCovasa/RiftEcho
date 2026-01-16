@@ -12,7 +12,15 @@
     "warnings": {
         "inhib_respawning": "inhib_respawning.wav",
         "baron_spawning": "baron_spawning.wav",
-        "dragon_spawning": "dragon_spawning.wav"
+        "dragon_spawning": "dragon_spawning.wav",
+        "grubs_spawning": "grubs_spawning.wav",
+        "herald_spawning": "herald_spawning.wav",
+        
+        "inhib_live": "inhib_live.wav",
+        "baron_live": "baron_live.wav",
+        "dragon_live": "dragon_live.wav",
+        "grubs_live": "grubs_live.wav",
+        "herald_live": "herald_live.wav"
     },
     "player": {
         "kill": "kill.wav",
