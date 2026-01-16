@@ -3,7 +3,7 @@
 
 Rift Echo replaces the default League of Legends announcer with a fully customizable, real-time audio engine. It tracks game state, kill streaks, and objective timers using the local League Client API (LCU) to deliver a responsive and immersive audio experience.
 
-![Rift Echo](https://imgur.com/a/DywLNCg)
+![Rift Echo](<img width="362" height="249" alt="Image" src="https://github.com/user-attachments/assets/7d4a4d07-75b1-4653-ba4d-ef9cb71221da" />)
 
 ## Features
 
